@@ -1,0 +1,27 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.containerSecond{
+    display: flex;
+}
+.row{ 
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.collum{
+  border: 1px solid gray;
+  margin: 2px;
+  min-width: 35px;
+  min-height: 35px;  
+}
+
+.btn{
+    margin: 20px;
+}
+
+
