@@ -1,48 +1,51 @@
-let gridRow = 16;
+let mainContainer = document.querySelector("#container");
 
-const container = document.querySelector("#container");
-
-// create measure button and OnClick event 
-const button = document.createElement("button");
-button.classList.add("btn");
-button.textContent = "New mesures ? I'm here to help you!";
-container.appendChild(button);
-
-button.addEventListener("click", () => {
+//New measures button and OnClick event 
+function button(){
+    const button = document.createElement("button");
+    button.classList.add("btn");
+    button.textContent = "New mesures ? I'm here to help you!";
+    container.appendChild(button);
     
-    
-});
-
-// create a function that removes the old grid and create a new one
-
-
-
-let containerSecond = document.createElement("div");
-containerSecond.classList.add("containerSecond");
-container.appendChild(containerSecond);
-
-grid(gridRow);
-
-
-function grid(squareNumber){
-    for(let r = 0; r < squareNumber; r++){
-        let row = document.createElement("div");
-        containerSecond.appendChild(row).classList.add("row");
-        for (i = 0; i < squareNumber; i++){
-            let collum = document.createElement("div");
-            row.appendChild(collum).classList.add("collum");
-        }
-    }
+    button.addEventListener("click", () => {
+        let row = document.querySelectorAll(".rows");
+        row.forEach(e => e.remove());
+        let column = document.querySelectorAll(".columns");
+        column.forEach(e => e.remove());
+        let i;
+        do{
+           i = prompt("Number of cells (between 2-100): ");
+        }while(i < 2 || i > 100);
+        let numberCells = i;
+        createGrid(numberCells);
+    }); 
 }
 
-let square = document.querySelectorAll(".collum");
-square.forEach(squar =>{
-    squar.addEventListener("mouseover", () => {
-        squar.setAttribute("style", "background-color: red;");
+button();
+
+//Grid container creation
+let gridContainer = document.createElement("div");
+mainContainer.appendChild(gridContainer).classList.add("gridContainer");
+
+//Grid creation
+function createGrid(size){
+    for(let c = 0; c < size; c++){
+        let columns = document.createElement("div");
+        gridContainer.appendChild(columns).classList.add("columns");
+            for (let r = 0; r < size; r++){
+                let rows = document.createElement("div");
+                columns.appendChild(rows).classList.add("rows");
+            }
+    }
+    let square = document.querySelectorAll(".rows");
+    square.forEach(squar =>{
+        squar.addEventListener("mouseover", () => {
+            squar.setAttribute("style", "background-color: red;");
+        });
     });
-});
+}
 
-
+createGrid(16);
 
 
 

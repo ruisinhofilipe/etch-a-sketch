@@ -1,27 +1,27 @@
 #container{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.containerSecond{
-    display: flex;
+.btn{
+  margin: 20px;
 }
-.row{ 
-  margin: 2px;
+
+.gridContainer{
+  width: 700px;
+  height: 700px;
+  display:flex;
+  border: 1px solid black;
+}
+
+.columns{
+  flex:1;
   display: flex;
   flex-direction: column;
 }
 
-.collum{
-  border: 1px solid gray;
-  margin: 2px;
-  min-width: 35px;
-  min-height: 35px;  
+.rows{
+  border: 1px solid black;
+  flex:1;
 }
-
-.btn{
-    margin: 20px;
-}
-
-
