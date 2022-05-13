@@ -21,7 +21,7 @@ function button(){
     }); 
 }
 
-button();
+
 
 //Grid container creation
 let gridContainer = document.createElement("div");
@@ -40,11 +40,12 @@ function createGrid(size){
     let square = document.querySelectorAll(".rows");
     square.forEach(squar =>{
         squar.addEventListener("mouseover", () => {
-            squar.setAttribute("style", "background-color: red;");
+            squar.setAttribute("style", "background-color: #a8adad");
         });
     });
 }
 
+button();
 createGrid(16);
 
 
