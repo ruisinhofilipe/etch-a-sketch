@@ -38,7 +38,7 @@ function createGrid(size){
             }
     }
     let square = document.querySelectorAll(".rows");
-    square.forEach(squar =>{
+    square.forEach(squar => {
         squar.addEventListener("mouseover", () => {
             squar.setAttribute("style", "background-color: #a8adad");
         });
