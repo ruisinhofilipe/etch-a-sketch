@@ -1,12 +1,31 @@
 let mainContainer = document.querySelector("#container");
 
-//New measures button and OnClick event 
+
+
+//New measures button and RGB button
 function button(){
     const button = document.createElement("button");
     button.classList.add("btn");
     button.textContent = "New mesures ? I'm here to help you!";
-    container.appendChild(button);
-    
+    bottomContainer.appendChild(button);
+
+    const rgbButton = document.createElement("button");
+    rgbButton.classList.add("rgb");
+    rgbButton.textContent = "RGB";
+    bottomContainer.appendChild(rgbButton);
+
+    // RGB color 
+    rgbButton.addEventListener("click", () => {
+        let square = document.querySelectorAll(".rows");
+        square.forEach(squar => {
+            squar.addEventListener("mouseover", () => {
+                //squar.setAttribute("style", "background-color: red");
+                squar.style.backgroundColor = randomColor();
+            });
+        });
+    });
+
+    // New measure button
     button.addEventListener("click", () => {
         let row = document.querySelectorAll(".rows");
         row.forEach(e => e.remove());
@@ -21,7 +40,14 @@ function button(){
     }); 
 }
 
-
+function randomColor(){
+    let elements = "0123456789ABCDEF";
+    let color = "#";
+    for(let i = 0; i < 6; i++){
+        color += elements[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 //Grid container creation
 let gridContainer = document.createElement("div");
@@ -43,7 +69,12 @@ function createGrid(size){
             squar.setAttribute("style", "background-color: #a8adad");
         });
     });
+
 }
+
+const bottomContainer = document.createElement("div");
+bottomContainer.classList.add("bottomContainer");
+container.appendChild(bottomContainer);
 
 button();
 createGrid(16);
