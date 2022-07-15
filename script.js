@@ -1,31 +1,35 @@
 let mainContainer = document.querySelector("#container");
 
-
-
-//New measures button and RGB button
+//New measures button and Rainbow button
 function button(){
+
+    // New measures button creation
     const button = document.createElement("button");
     button.classList.add("btn");
-    button.textContent = "New mesures ? I'm here to help you!";
+    button.textContent = "New grid";
     bottomContainer.appendChild(button);
 
-    const rgbButton = document.createElement("button");
-    rgbButton.classList.add("rgb");
-    rgbButton.textContent = "RGB";
-    bottomContainer.appendChild(rgbButton);
+    // Rainbow button creation
+    const rainbowButton = document.createElement("button");
+    rainbowButton.classList.add("rainbow");
+    rainbowButton.textContent = "Rainbow mode";
+    bottomContainer.appendChild(rainbowButton);
 
-    // RGB color 
-    rgbButton.addEventListener("click", () => {
-        let square = document.querySelectorAll(".rows");
-        square.forEach(squar => {
-            squar.addEventListener("mouseover", () => {
-                //squar.setAttribute("style", "background-color: red");
-                squar.style.backgroundColor = randomColor();
-            });
-        });
-    });
+    // Default color button creation
+    const defaultButton = document.createElement("button");
+    defaultButton.classList.add("defaultColor");
+    defaultButton.textContent = "Normal mode";
+    bottomContainer.appendChild(defaultButton);
 
-    // New measure button
+
+    // Restart button creation
+    const restartButton = document.createElement("button");
+    restartButton.classList.add("restartButton");
+    restartButton.textContent = "Restart grid";
+    bottomContainer.appendChild(restartButton);
+    
+
+    // New measures button
     button.addEventListener("click", () => {
         let row = document.querySelectorAll(".rows");
         row.forEach(e => e.remove());
@@ -37,6 +41,31 @@ function button(){
         }while(i < 2 || i > 100);
         let numberCells = i;
         createGrid(numberCells);
+    }); 
+
+    // Rainbow button 
+    rainbowButton.addEventListener("click", () => {
+        let square = document.querySelectorAll(".rows");
+        square.forEach(squar => {
+            squar.addEventListener("mouseover", () => {
+                squar.style.backgroundColor = randomColor();
+            });
+        });
+    });
+
+    // Default color button
+    defaultButton.addEventListener("click", () => {
+        let square = document.querySelectorAll(".rows");
+        square.forEach(squar => {
+            squar.addEventListener("mouseover", () => {
+                squar.style.backgroundColor = "#a8adad";
+            });
+        });
+    });
+
+    // Restart button 
+    restartButton.addEventListener("click", () => {
+        location.reload();
     }); 
 }
 
@@ -66,10 +95,9 @@ function createGrid(size){
     let square = document.querySelectorAll(".rows");
     square.forEach(squar => {
         squar.addEventListener("mouseover", () => {
-            squar.setAttribute("style", "background-color: #a8adad");
+            squar.style.backgroundColor = "#a8adad";
         });
     });
-
 }
 
 const bottomContainer = document.createElement("div");
