@@ -47,7 +47,8 @@
 .btn,
 .rainbow,
 .restartButton,
-.defaultColor{
+.defaultColor,
+.erase{
   font-size: 15px;
   margin: 30px;
   padding: 15px;
@@ -62,7 +63,8 @@
 .btn:hover,
 .rainbow:hover,
 .restartButton:hover,
-.defaultColor:hover{
+.defaultColor:hover,
+.erase:hover{
   cursor:pointer;
   transform: scale(1.05);
   transition: 0.05s;
