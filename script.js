@@ -1,5 +1,10 @@
+/* 
+Few lines with comments are actually unfinished code -- click and not click concerning the erase button -> to finish later.
+*/
+
+
 let mainContainer = document.querySelector("#container");
-let color = "#a8adad";
+// let click = false;
 
 //Grid container creation
 let gridContainer = document.createElement("div");
@@ -19,20 +24,19 @@ function createGrid(size){
     let square = document.querySelectorAll(".rows");
     square.forEach(squar => {
         squar.addEventListener("mouseover", () => {
-            if(color === "#a8adad"){
-                squar.style.backgroundColor = color;
-                console.log("arroz");
-            }else if(color === "normal"){
-                squar.style.backgroundColor = "red";
-                console.log("massa");
+            if(color === "normal"){
+                squar.style.backgroundColor = "#a8adad";
             }else if(color === "erase"){
-                squar.style.backgroundColor = "#7fe3f5"
+                //if(click){
+                squar.style.backgroundColor = "#7fe3f5";
+                //}
             }else{
                 squar.style.backgroundColor = randomColor();
             }
-        });
+        })
     });
 }
+
 
 const bottomContainer = document.createElement("div");
 bottomContainer.classList.add("bottomContainer");
@@ -46,32 +50,6 @@ button.classList.add("btn");
 button.textContent = "New grid";
 bottomContainer.appendChild(button);
 
-//Rainbow button creation
-const rainbowButton = document.createElement("button");
-rainbowButton.classList.add("rainbow");
-rainbowButton.textContent = "Rainbow mode";
-bottomContainer.appendChild(rainbowButton);
-
-//Default color button creation
-const defaultButton = document.createElement("button");
-defaultButton.classList.add("defaultColor");
-defaultButton.textContent = "Normal mode";
-bottomContainer.appendChild(defaultButton);
-
-//Erase button creation
-const eraseButton = document.createElement("button");
-eraseButton.classList.add("erase");
-eraseButton.textContent = "Erase";
-bottomContainer.appendChild(eraseButton);
-
-//Restart button creation
-const restartButton = document.createElement("button");
-restartButton.classList.add("restartButton");
-restartButton.textContent = "Restart grid";
-bottomContainer.appendChild(restartButton);
-
-
-//New measures button
 button.addEventListener("click", () => {
     let row = document.querySelectorAll(".rows");
     row.forEach(e => e.remove());
@@ -85,29 +63,43 @@ button.addEventListener("click", () => {
     createGrid(numberCells);
 }); 
 
-//Rainbow button 
-rainbowButton.addEventListener("click", () => {
-    color = "rainbow";
-});
+//Rainbow button creation
+const rainbowButton = document.createElement("button");
+rainbowButton.classList.add("rainbow");
+rainbowButton.textContent = "Rainbow mode";
+bottomContainer.appendChild(rainbowButton);
 
-//Default color button
-defaultButton.addEventListener("click", () => {
-    color = "normal";
-});
+rainbowButton.addEventListener("click", () => {color = "rainbow";});
 
-//Erase button
-eraseButton.addEventListener("click", () => {
-    color = "erase";
-});
+//Default color button creation
+const defaultButton = document.createElement("button");
+defaultButton.classList.add("defaultColor");
+defaultButton.textContent = "Normal mode";
+bottomContainer.appendChild(defaultButton);
 
-//Restart button 
+defaultButton.addEventListener("click", () => {color = "normal";});
+
+//Erase button creation
+const eraseButton = document.createElement("button");
+eraseButton.classList.add("erase");
+eraseButton.textContent = "Erase";
+bottomContainer.appendChild(eraseButton);
+
+eraseButton.addEventListener("click", () => {color = "erase";});
+
+//Restart button creation
+const restartButton = document.createElement("button");
+restartButton.classList.add("restartButton");
+restartButton.textContent = "Clean grid";
+bottomContainer.appendChild(restartButton);
+
 restartButton.addEventListener("click", () => {
     let square = document.querySelectorAll(".rows");
     square.forEach(squar => {
         squar.style.backgroundColor = "#7fe3f5";
     })
-}); 
-
+});
+ 
 function randomColor(){
     let elements = "0123456789ABCDEF";
     let color = "#";
@@ -117,7 +109,11 @@ function randomColor(){
     return color;
 }
 
-
+/*
+document.querySelector("body").addEventListener("click", () => {
+    click = !click;
+})
+*/
 
 
 
